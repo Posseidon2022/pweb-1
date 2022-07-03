@@ -302,17 +302,7 @@ echo "
 */30 * * * * /usr/bin/php /var/www/html/pages/system/hist.online.php" > cronset
 crontab cronset && rm cronset > /dev/null 2>&1
 }
-function fun_swap {
-			swapoff -a
-            rm -rf /bin/ram.img > /dev/null 2>&1
-            fallocate -l 4G /bin/ram.img > /dev/null 2>&1
-            chmod 600 /bin/ram.img > /dev/null 2>&1
-            mkswap /bin/ram.img > /dev/null 2>&1
-            swapon /bin/ram.img > /dev/null 2>&1
-            echo 50  > /proc/sys/vm/swappiness
-            echo '/bin/ram.img none swap sw 0 0' | tee -a /etc/fstab > /dev/null 2>&1
-            sleep 2
-}
+
 function tst_bkp {
 cd || exit
 sed -i "s;1020;$pwdroot;g" /var/www/html/lib/Database/Connection.php > /dev/null 2>&1
