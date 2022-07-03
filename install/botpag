@@ -1,6 +1,6 @@
 #!/bin/bash
 clear
-#--------[ DESENVOLVIDO POR @nandoslayer ]-----------#
+#--------[ DESENVOLVIDO POR @Igorhenri0407 ]-----------#
 source apibot
 touch lista
 api_bot=$1
