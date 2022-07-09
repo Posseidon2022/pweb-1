@@ -799,7 +799,7 @@ fun_botOnOff() {
 			sleep 3
         }
         fun_bar 'fun_bot1'
-        [[ $(ps x | grep 'bot_painel' | grep -v 'grep' | wc -l) != '0' ]] && echo -e "\n\033[1;32m BOT PWEB ATIVADO!\033[0m" || echo -e "\n\033[1;31m ERRO! CONFIRA SUAS INFORMAÇÕES\033[0m"
+        [[ $(ps x | grep "bot_painel" | grep -v 'grep' | wc -l) != '0' ]] && echo -e "\n\033[1;32m BOT PWEB ATIVADO!\033[0m" || echo -e "\n\033[1;31m ERRO! CONFIRA SUAS INFORMAÇÕES\033[0m"
         sleep 2
         cat /dev/null > ~/.bash_history && history -c
         bot_telegram
