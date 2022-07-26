@@ -1,5 +1,5 @@
 #!/bin/bash
-[[ $(awk -F" " '{print $2}' /usr/lib/telegram) == "@nandoslayer" ]] && {
+[[ $(awk -F" " '{print $2}' /usr/lib/telegram) == "@igorteste" ]] && {
 ### CORES DA BARRA
 msg() {
   BRAN='\033[1;37m' && VERMELHO='\e[31m' && VERDE='\e[32m' && AMARELO='\e[33m'
@@ -292,9 +292,6 @@ sed -i "s;localhost;$IP;g" /var/www/html/pages/system/config.php > /dev/null 2>&
 sleep 2
 if [[ -e "/var/www/html/pages/system/pass.php" ]]; then
 sed -i "s;1020;$senha;g" /var/www/html/pages/system/pass.php > /dev/null 2>&1
-fi
-if [[ -e "/var/www/html/lib/Database/Connection.php" ]]; then
-sed -i "s;1020;$senha;g" /var/www/html/lib/Database/Connection.php > /dev/null 2>&1
 fi
 ##################################
 clear
