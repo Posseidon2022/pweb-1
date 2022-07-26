@@ -449,47 +449,6 @@ clear
 pweb
 exit;
 }
-painel_rodape () {
-clear
-rodapeatual=$(cut -d"'" -f2 /var/www/html/rodape)
-echo ""
-echo -e "\E[44;1;37m    ALTERAR NOME DO RODAPE     \E[0m"
-echo ""
-echo -e "\E[44;1;37m    Aqui é definido o nome do rodape     \E[0m"
-echo ""
-echo ""
-echo -e "\033[1;36m NOME DO RODAPE ATUAL:\033[1;37m $rodapeatual\033[0m"
-echo ""
-echo -ne "\033[1;32m INFORME O NOVO NOME DO RODAPE\033[1;37m: "; read rodape
-    [[ -z $rodape ]] && {
-        echo -e "\n\033[1;31mINFORME O NOVO NOME DO RODAPE!"
-		sleep 2
-		cat /dev/null > ~/.bash_history && history -c
-        clear
-        pweb
-		exit;
-    }
-echo ""
-echo -e "   \033[1;32mRODAPE ALTERADO COM SUCESSO!\033[1;37m"
-echo ""
-sleep 3s
-cd || exit
-sed -i "s;$rodapeatual;$rodape;g" /var/www/html/empresa > /dev/null 2>&1
-sed -i "s;$rodapeatual;$rodape;g" /var/www/html/home.php > /dev/null 2>&1
-sed -i "s;$rodapeatual;$rodape;g" /var/www/html/index.php > /dev/null 2>&1
-sed -i "s;$rodapeatual;$rodape;g" /var/www/html/login.php > /dev/null 2>&1
-sed -i "s;$rodapeatual;$rodape;g" /var/www/html/admin/home.php > /dev/null 2>&1
-sed -i "s;$rodapeatual;$rodape;g" /var/www/html/admin/index.php > /dev/null 2>&1
-sed -i "s;$rodapeatual;$rodape;g" /var/www/html/admin/login.php > /dev/null 2>&1
-sed -i "s;$rodapeatual;$rodape;g" /var/www/html/apps/index.php > /dev/null 2>&1
-sed -i "s;$rodapeatual;$rodape;g" /var/www/html/apps/termos.php > /dev/null 2>&1
-echo ""
-service apache2 restart > /dev/null 2>&1
-cat /dev/null > ~/.bash_history && history -c
-clear
-pweb
-exit;
-}
 #BOT TELEGRAM
 bot_telegram () {
 clear
@@ -799,7 +758,7 @@ fun_botOnOff() {
 			sleep 3
         }
         fun_bar 'fun_bot1'
-        [[ $(ps x | grep "bot_painel" | grep -v 'grep' | wc -l) != '0' ]] && echo -e "\n\033[1;32m BOT PWEB ATIVADO!\033[0m" || echo -e "\n\033[1;31m ERRO! CONFIRA SUAS INFORMAÇÕES\033[0m"
+        [[ $(ps x | grep "bot_painel" | grep -v grep | wc -l) != '0' ]] && echo -e "\n\033[1;32m BOT PWEB ATIVADO!\033[0m" || echo -e "\n\033[1;31m ERRO! CONFIRA SUAS INFORMAÇÕES\033[0m"
         sleep 2
         cat /dev/null > ~/.bash_history && history -c
         bot_telegram
@@ -1154,34 +1113,30 @@ case "$x" in
    exit;
    ;;
    2 | 02)
-   painel_att
-   exit;
-   ;;
-   3 | 03)
    painel_empresa
    exit;
    ;;
-   4 | 04)
+   3 | 03)
    painel_rest
    exit;
    ;;
-   5 | 05)
+   4 | 04)
    oracl
    exit;
    ;;
-   6 | 06)
+   5 | 05)
    att_pweb
    exit;
    ;;
-   7 | 07)
+   6 | 06)
    senha_root
    exit;
    ;;
-   8 | 08)
+    7 | 07)
    bot_telegram
    exit;
    ;;
-   9 | 09)
+    8 | 08)
    clear
    velocity
    echo ""
@@ -1189,11 +1144,11 @@ case "$x" in
    pweb
    exit;
    ;;
-   10 | 010)
+    9 | 09)
    autoexec
    exit;
    ;;
-   11 | 011)
+   10 | 010)
    echo ""
    echo -ne "\033[1;36mDESEJA REALMENTE REINICIAR [S/N]: \033[1;37m"; read x
    [[ $x = @(n|N) ]] && pweb
